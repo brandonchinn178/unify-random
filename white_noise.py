@@ -15,7 +15,7 @@ class WhiteNoiseGenerator(Program):
 
     def _get_parser(self):
         parser = super(WhiteNoiseGenerator, self)._get_parser()
-        parser.add_argument('-o', '--output', help='Filename of output image, e.g. foo.wav', default='tmp.wav')
+        parser.add_argument('-o', '--output', help='Filename of output file, e.g. foo.wav', default='tmp.wav')
         return parser
 
     def generate(self):

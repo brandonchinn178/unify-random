@@ -53,7 +53,7 @@ class Program(object):
         Return a parser to parse command line arguments
         """
         parser = argparse.ArgumentParser(description=self.DESCRIPTION)
-        parser.add_argument('-d', '--debug', action='store_true')
+        parser.add_argument('-d', '--debug', action='store_true', help='Use this flag to use Python\'s random module instead of random.org')
         return parser
 
     def get_random_int(self, min, max, num=1):
