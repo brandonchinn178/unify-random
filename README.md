@@ -14,3 +14,14 @@ This challenge is programming language agnostic! Pick whichever language you're 
 - An RSA key pair. (100 points)
 
 3. Push your code and one of the 3 requirements on github on your own public repo. Send us an email back at jobs@unify.id with your repo URL. You have 3 hours and we'll check your time on whatever is earliest, the timestamp on your last commit or your email reply back. Have fun with randomness!
+
+Installation
+------------
+
+1. Install `conda`
+1. Run `conda env create`
+
+Running
+-------
+
+Run the programs like `python bitmap.py`.
