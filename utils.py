@@ -9,7 +9,10 @@ Guidelines: (https://www.random.org/clients)
 5. Supply email address in User-Agent field
 """
 
-import argparse, requests, random
+import argparse, requests, random, os
+
+# maximum number of values that can be retrieved from random.org at once
+MAX_VALS = int(1e4)
 
 def _api_request(endpoint, **parameters):
     params = '&'.join([
@@ -42,6 +45,9 @@ class Program(object):
         if self.args.debug is None:
             self.args.debug = debug
 
+        if not os.path.isdir('output'):
+            os.mkdir('output')
+
     def _get_parser(self):
         """
         Return a parser to parse command line arguments
@@ -58,12 +64,11 @@ class Program(object):
         @param max -- Largest value allowed for each integer
         @param num -- Number of integers to get from the server
         """
-        # maximum number of numbers that can be retrieved at once
-        if num > 1e4:
+        if num > MAX_VALS:
             ints = []
-            while num > 1e4:
-                ints.extend(self.get_random_int(min, max, 1e4))
-                num -= 1e4
+            while num > MAX_VALS:
+                ints.extend(self.get_random_int(min, max, MAX_VALS))
+                num -= MAX_VALS
             ints.extend(self.get_random_int(min, max, num))
             return ints
 

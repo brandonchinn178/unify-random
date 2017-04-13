@@ -17,13 +17,13 @@ class BitmapGenerator(Program):
         return parser
 
     def generate(self):
-        data = self.get_random_int(1, 255, WIDTH * HEIGHT * 3)
+        data = self.get_random_int(0, 255, WIDTH * HEIGHT * 3)
         image = Image.frombytes(
             'RGB',
             size=(WIDTH, HEIGHT),
             data=''.join([pack('B', x) for x in data]),
         )
-        image.save(self.args.output)
+        image.save('output/%s' % self.args.output)
 
 if __name__ == '__main__':
     BitmapGenerator().generate()
